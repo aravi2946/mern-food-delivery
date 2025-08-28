@@ -1,0 +1,8 @@
+# Enforce LF endings for frontend files
+*.css text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.html text eol=lf
+
+# Normalize everything else
+* text=auto

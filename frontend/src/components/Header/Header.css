@@ -17,6 +17,7 @@
     left: 6vw;
     color: white;
     max-width: 50%;
+    animation: fadeIn 2s;
 
 }
 
@@ -26,6 +27,7 @@
 }
 
 .header-content button {
+    cursor: pointer;
     padding: 15px 30px;
     background-color: #fff;
     border: none;

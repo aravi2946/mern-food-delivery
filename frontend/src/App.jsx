@@ -1,10 +1,13 @@
 import { Route, Routes } from "react-router-dom"
 import Navbar from "./components/Navbar/Navbar"
 import Home from "./pages/Home/Home"
+import Footer from "./components/Footer/Footer"
 
 
 const App = () => {
   return (
+    <>
+    
     <div className="app">
       <Navbar/>
       <Routes>
@@ -12,6 +15,8 @@ const App = () => {
 
       </Routes>
     </div>
+      <Footer/>
+    </>
   )
 }
 

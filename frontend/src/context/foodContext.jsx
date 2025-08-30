@@ -23,6 +23,18 @@ function FoodContextState({ children }) {
     }
   }
   
+  const getTotalFromCart = () => {
+    let totalAmount = 0;
+
+    for (let item in cartItems) {
+      if (cartItems[item] > 0) {
+        let itemInfo = food_list.find(product => product._id == item)
+        totalAmount+= itemInfo.price*cartItems[item]
+
+      }
+    }
+    return totalAmount;
+  }
   
 
   
@@ -31,7 +43,8 @@ function FoodContextState({ children }) {
       addToCart,
       removeFromCart,
       cartItems,
-      setCartItems
+      setCartItems,
+      getTotalFromCart
     }
     return (
         <foodContext.Provider value={food_module}>{children}</foodContext.Provider>

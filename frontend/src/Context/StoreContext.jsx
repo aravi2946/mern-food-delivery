@@ -9,55 +9,55 @@ export const StoreContext = createContext(null)
 function StoreContextProvider({ children }) {
 
     const url = `http://localhost:4000`;
-        
+
     const [cartItems, setCartItems] = useState({})
     const [token, setToken] = useState("")
-    const [food_list,setFoodList] = useState([])
-    
+    const [food_list, setFoodList] = useState([])
+
     const fetchFoodList = async () => {
         const response = await axios.get(url + "/api/food/list")
         console.log(response.data);
-        
+
         setFoodList(response.data.data)
-        
+
     }
     const loadCartData = async (token) => {
-        
+
         const response = await axios.post(url + "/api/cart/get", {}, { headers: { token } })
         setCartItems(response.data.cartData)
     }
-    
+
     useEffect(() => {
         async function loadData() {
             await fetchFoodList();
-            
+
             if (localStorage.getItem("Token")) {
                 setToken(localStorage.getItem("Token"))
                 await loadCartData(localStorage.getItem("Token"))
             }
         }
         loadData();
-    },[])
+    }, [])
 
-    const addToCart = async(itemId) => {
-
+    const addToCart = async (itemId) => {
+  
         if (!cartItems[itemId]) {
-            setCartItems((prev) => ({...prev,[itemId]:1}))
+            setCartItems((prev) => ({ ...prev, [itemId]: 1 }))
         } else {
-            setCartItems((prev) => ({...prev,[itemId]:prev[itemId]+1}))
+            setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }))
         }
 
         if (token) {
-            await axios.post(url+"/api/cart/add",{itemId},{headers:{token}})
+            await axios.post(url + "/api/cart/add", { itemId }, { headers: { token } })
         }
 
     }
-    const removeFromCart = async(itemId) => {
+    const removeFromCart = async (itemId) => {
         setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }))
         if (token) {
             await axios.post(url + "/api/cart/remove", { itemId }, { headers: { token } })
         }
-        
+
     }
 
     const getTotalCartAmount = () => {
@@ -65,14 +65,14 @@ function StoreContextProvider({ children }) {
         for (const item in cartItems) {
             if (cartItems[item] > 0) {
                 let itemInfo = food_list.find((product) => product._id == item);
-                totalAmount+= itemInfo.price*cartItems[item]
+                totalAmount += itemInfo.price * cartItems[item]
             }
-            
+
         }
         return totalAmount;
-      
-  }
-    
+
+    }
+
     const contextValue = {
         food_list,
         cartItems,

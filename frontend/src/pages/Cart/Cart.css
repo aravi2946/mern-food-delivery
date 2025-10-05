@@ -53,9 +53,11 @@
     color: white;
     background-color: tomato;
     width: max(15vw,200px);
-    padding: 12px 0px;
+    padding: 12px;
     border-radius: 4px;
     cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
 }
 .cart-promocode{
     flex:1
@@ -64,7 +66,7 @@
     color: #555;
 }
 .cart-promocode-input{
-    margin-top: 10px;
+    margin-top: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;

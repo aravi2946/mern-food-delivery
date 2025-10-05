@@ -3,7 +3,7 @@ import { assets } from '../../assets/assets'
 import './Navbar.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { StoreContext } from '../../Context/StoreContext'
-import { useEffect } from 'react'
+
 
 const Navbar = ({setShowLogin}) => {
     const [menu, setMenu] = useState("home")
@@ -38,8 +38,7 @@ const Navbar = ({setShowLogin}) => {
                     <Link to='/cart'>
                         <img src={assets.basket_icon} alt="add to cart" />
                         <div className={getTotalCartAmount()==0?"":"dot"}></div>
-
-                    
+ 
                     </Link> 
                 </div>
                 {

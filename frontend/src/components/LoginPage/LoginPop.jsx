@@ -2,7 +2,6 @@
 import { useState } from 'react'
 import './LoginPop.css'
 import { assets } from '../../assets/assets'
-import { useEffect } from 'react'
 import axios from "axios"
 import { useContext } from 'react'
 import { StoreContext } from '../../Context/StoreContext'

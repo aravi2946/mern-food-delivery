@@ -42,6 +42,7 @@
     }
 
     .order-item select {
+        width: 20px;
         padding: 5px;
         font-size: 12px;
     }
